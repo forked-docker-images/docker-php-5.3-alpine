@@ -1,4 +1,4 @@
-FROM cespi/php-5.3:apache-$TAG
+FROM $REPO:apache-$TAG
 
 
 RUN apk add -U --no-cache \
