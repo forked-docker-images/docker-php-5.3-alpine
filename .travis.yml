@@ -12,7 +12,7 @@ script:
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD quay.io
-  - export REPO=greenled/php-5.3
+  - export REPO=forked_docker_images/php-5.3
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -f Dockerfile -t quay.io/$REPO:cli-$TAG .
   - docker build -f apache/Dockerfile -t quay.io/$REPO:apache-$TAG ./apache
