@@ -19,11 +19,11 @@ after_success:
   - docker push $REPO:cli-$TAG
   - docker push $REPO:apache-$TAG
   - docker push $REPO:fpm-$TAG
-  - envsubst '$TAG' < with-modules/Dockerfile.tpl > with-modules/Dockerfile
+  - envsubst '$REPO,$TAG' < with-modules/Dockerfile.tpl > with-modules/Dockerfile
   - docker build -f with-modules/Dockerfile -t $REPO:modules-cli-$TAG ./with-modules
-  - envsubst '$TAG' < with-modules/apache/Dockerfile.tpl > with-modules/apache/Dockerfile
+  - envsubst '$REPO,$TAG' < with-modules/apache/Dockerfile.tpl > with-modules/apache/Dockerfile
   - docker build -f with-modules/apache/Dockerfile -t $REPO:modules-apache-$TAG ./with-modules/apache
-  - envsubst '$TAG' < with-modules/fpm/Dockerfile.tpl > with-modules/fpm/Dockerfile
+  - envsubst '$REPO,$TAG' < with-modules/fpm/Dockerfile.tpl > with-modules/fpm/Dockerfile
   - docker build -f with-modules/fpm/Dockerfile -t $REPO:modules-fpm-$TAG ./with-modules/fpm
   - docker push $REPO:modules-cli-$TAG
   - docker push $REPO:modules-apache-$TAG
