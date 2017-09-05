@@ -26,6 +26,7 @@ RUN apk add -U --no-cache \
   && docker-php-ext-install soap \
   && docker-php-ext-install xsl \
   && docker-php-ext-install gd mbstring pdo pdo_mysql zip \
+  && docker-php-ext-install mysqli xml \
   && apk del --purge autoconf alpine-sdk mariadb-dev openldap-dev \
   && apk add -U mariadb-client-libs libldap \
   && cd /usr/local/bin \
